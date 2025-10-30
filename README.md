@@ -73,9 +73,9 @@ Our `Toast` component should support 4 different variants:
 
 **Acceptance Criteria:**
 
-- The “Message” textarea should be driven by React state
-- Using the data in the `VARIANT_OPTIONS` array, render 4 radio buttons within the “Variant” row. They should all be part of the same group (so that only one can be selected at a time). They should also be driven by React state.
-- There should be no key warnings in the console.
+- The “Message” textarea should be driven by React state ✅
+- Using the data in the `VARIANT_OPTIONS` array, render 4 radio buttons within the “Variant” row. They should all be part of the same group (so that only one can be selected at a time). They should also be driven by React state. ✅
+- There should be no key warnings in the console. ✅
 
 ---
 
@@ -112,12 +112,12 @@ If you get stuck, you may wish to review the following lessons from the course:
 
 **Acceptance Criteria:**
 
-- The toast component should show the message entered in the textarea, essentially acting as a “live preview”.
+- The toast component should show the message entered in the textarea, essentially acting as a “live preview”. ✅
 - The toast's styling should be affected by the “variant” selected:
-  - The colors can be set by specifying the appropriate class on the top-level `<div>`. By default, it's set to `styles.notice`, but you'll want to dynamically select the class based on the variant (eg. for a success toast, you'll want to apply `styles.success`).
-  - The icon can be selected from the `ICONS_BY_VARIANT` object. Feel free to re-organize things however you wish!
-- The toast should be hidden by default, but can be shown by clicking the "Pop Toast!” button.
-- The toast can be hidden by clicking the “×” button within the toast.
+  - The colors can be set by specifying the appropriate class on the top-level `<div>`. By default, it's set to `styles.notice`, but you'll want to dynamically select the class based on the variant (eg. for a success toast, you'll want to apply `styles.success`). ✅
+  - The icon can be selected from the `ICONS_BY_VARIANT` object. Feel free to re-organize things however you wish! ✅
+- The toast should be hidden by default, but can be shown by clicking the "Pop Toast!” button. ✅
+- The toast can be hidden by clicking the “×” button within the toast. ✅
 
 ---
 
@@ -159,11 +159,11 @@ Some lessons that might help, from the course:
 
 **Acceptance Criteria:**
 
-- Instead of live-editing a single Toast instance, the playground should be used to push new toast messages onto a stack, rendered inside `ToastShelf` and shown in the corner of the page.
-- When “Pop Toast!” is clicked, the message/variant form controls should be reset to their default state (`message` should be an empty string, `variant` should be "notice").
+- Instead of live-editing a single Toast instance, the playground should be used to push new toast messages onto a stack, rendered inside `ToastShelf` and shown in the corner of the page. ✅
+- When “Pop Toast!” is clicked, the message/variant form controls should be reset to their default state (`message` should be an empty string, `variant` should be "notice"). ✅
 - Clicking the “×” button inside the toast should remove that specific toast (but leave the rest untouched).
-- A proper `<form>` tag should be used in the `ToastPlayground`. The toast should be created when submitting the form.
-- **There should be no key warnings in the console!** Keys should be unique, and you should not use the index.
+- A proper `<form>` tag should be used in the `ToastPlayground`. The toast should be created when submitting the form. ✅
+- **There should be no key warnings in the console!** Keys should be unique, and you should not use the index. ✅
 
 ---
 
@@ -287,7 +287,7 @@ There are lots of different ways to tackle this, and there's no right or wrong a
 
 ```js
 useEscapeKey(() => {
-  // Code to dismiss all toasts
+	// Code to dismiss all toasts
 });
 ```
 

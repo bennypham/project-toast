@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '../Button';
 import Toast from '../Toast/Toast';
+import ToastShelf from '../ToastShelf/ToastShelf';
 
 import styles from './ToastPlayground.module.css';
 
@@ -10,32 +11,44 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 function ToastPlayground() {
 	const [message, setMessage] = React.useState('');
 	const [variant, setVariant] = React.useState('notice');
-	const [isToastToggled, setIsToastToggled] = React.useState(false);
+	// const [isToastToggled, setIsToastToggled] = React.useState(false);
+	const [toasts, setToasts] = React.useState([]);
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		setIsToastToggled(true);
+	function handleNewToast(toast) {
+		toast.preventDefault();
+		// console.log(toast);
+		// setIsToastToggled(true);
+		const newToast = {
+			...toast,
+			id: crypto.randomUUID(),
+			message,
+			variant,
+		};
+
+		// console.log(newToast);
+		const nextToast = [...toasts, newToast];
+		setToasts(nextToast);
+		setMessage('');
+		setVariant('notice');
 	}
 
 	function handleToastDismiss(event) {
-		setIsToastToggled(false);
+		// setIsToastToggled(false);
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleNewToast}>
 			<div className={styles.wrapper}>
 				<header>
 					<img alt="Cute toast mascot" src="/toast.png" />
 					<h1>Toast Playground</h1>
 				</header>
-				{isToastToggled && (
-					<Toast
-						handleToastDismiss={handleToastDismiss}
-						variant={variant}
-					>
+				{/* {isToastToggled && (
+					<Toast onDismiss={handleToastDismiss} variant={variant}>
 						{message}
 					</Toast>
-				)}
+				)} */}
+				<ToastShelf toasts={toasts} />
 				<div className={styles.controlsWrapper}>
 					<div className={styles.row}>
 						<label
@@ -48,6 +61,7 @@ function ToastPlayground() {
 						<div className={styles.inputWrapper}>
 							<textarea
 								id="message"
+								required
 								value={message}
 								className={styles.messageInput}
 								onChange={(event) => setMessage(event.target.value)}
