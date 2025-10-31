@@ -19,8 +19,8 @@ const ICONS_BY_VARIANT = {
 };
 
 function Toast({ variant, onDismiss, children }) {
-	const variantColor = styles[variant] ?? styles.notice;
-	const Icon = ICONS_BY_VARIANT[variant] ?? Info;
+	const variantColor = styles[variant];
+	const Icon = ICONS_BY_VARIANT[variant];
 
 	return (
 		<div className={`${styles.toast} ${variantColor}`}>

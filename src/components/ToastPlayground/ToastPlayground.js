@@ -32,8 +32,12 @@ function ToastPlayground() {
 		setVariant('notice');
 	}
 
-	function handleToastDismiss(event) {
-		// setIsToastToggled(false);
+	function handleToastDismiss(t) {
+		const newToasts = toasts.filter((toast) => {
+			return toast.id !== t;
+		});
+
+		setToasts(newToasts);
 	}
 
 	return (
@@ -48,7 +52,7 @@ function ToastPlayground() {
 						{message}
 					</Toast>
 				)} */}
-				<ToastShelf toasts={toasts} />
+				<ToastShelf toasts={toasts} onDismiss={handleToastDismiss} />
 				<div className={styles.controlsWrapper}>
 					<div className={styles.row}>
 						<label
@@ -61,7 +65,7 @@ function ToastPlayground() {
 						<div className={styles.inputWrapper}>
 							<textarea
 								id="message"
-								required
+								// required
 								value={message}
 								className={styles.messageInput}
 								onChange={(event) => setMessage(event.target.value)}
